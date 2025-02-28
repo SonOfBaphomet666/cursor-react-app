@@ -1,0 +1,25 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+html,
+body,
+*,
+button,
+a,
+input,
+.disabled,
+a:disabled,
+input:disabled {
+  cursor: none;
+}
+
+button:hover,
+a:hover,
+input:hover,
+.hover:hover {
+  cursor: none;
+}
