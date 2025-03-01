@@ -5,6 +5,7 @@ function App() {
     <div className="App">
       <CustomCursor />
       <button>Button</button>
+      <video>asdsadasd</video>
     </div>
   );
 }
