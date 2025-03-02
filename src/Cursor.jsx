@@ -3,13 +3,6 @@ import { useEffect } from "react";
 const CustomCursor = () => {
   const cursor = document.createElement("div");
   cursor.classList.add("cursor");
-  const videoElements = document.querySelectorAll("video");
-  const audioElements = document.querySelectorAll("audio");
-
-  videoElements.forEach((video) => {
-    video.addEventListener("mouseenter", handleMouseEnter);
-    video.addEventListener("mouseleave", handleMouseLeave);
-  });
 
   let x = 0;
   let y = 0;
@@ -50,6 +43,20 @@ const CustomCursor = () => {
     cursor.classList.remove("cursor--hover");
   };
 
+  const handleFullscreenChange = () => {
+    const fullscreenElement = document.fullscreenElement;
+    if (fullscreenElement) {
+      fullscreenElement.appendChild(cursor);
+    } else {
+      document.body.appendChild(cursor);
+    }
+
+    targetX = window.innerWidth / 2;
+    targetY = window.innerHeight / 2;
+    x = targetX;
+    y = targetY;
+  };
+
   useEffect(() => {
     targetX = window.innerWidth / 2;
     targetY = window.innerHeight / 2;
@@ -63,12 +70,37 @@ const CustomCursor = () => {
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    const videoElements = document.querySelectorAll("video");
+    const audioElements = document.querySelectorAll("audio");
+
+    videoElements.forEach((video) => {
+      video.addEventListener("mouseenter", handleMouseEnter);
+      video.addEventListener("mouseleave", handleMouseLeave);
+    });
+
+    audioElements.forEach((audio) => {
+      audio.addEventListener("mouseenter", handleMouseEnter);
+      audio.addEventListener("mouseleave", handleMouseLeave);
+    });
 
     return () => {
       document.body.removeChild(cursor);
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+
+      videoElements.forEach((video) => {
+        video.removeEventListener("mouseenter", handleMouseEnter);
+        video.removeEventListener("mouseleave", handleMouseLeave);
+      });
+
+      audioElements.forEach((audio) => {
+        audio.removeEventListener("mouseenter", handleMouseEnter);
+        audio.removeEventListener("mouseleave", handleMouseLeave);
+      });
     };
   }, []);
   return null;

@@ -45,3 +45,31 @@ input:hover,
 .cursor--hover {
   background-color: yellow;
 }
+
+video::-webkit-media-controls {
+  cursor: none !important;
+}
+
+video::-webkit-media-controls-play-button,
+video::-webkit-media-controls-start-playback-button,
+video::-webkit-media-controls-mute-button,
+video::-webkit-media-controls-volume-slider,
+video::-webkit-media-controls-timeline,
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-fullscreen-button,
+video::-webkit-media-controls-time-remaining-display {
+  cursor: none !important;
+}
+
+audio::-webkit-media-controls {
+  cursor: none !important;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-timeline {
+  cursor: none !important;
+}
