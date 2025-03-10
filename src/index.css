@@ -31,19 +31,25 @@ input:hover,
   border-radius: 50%;
   background-color: #000;
   pointer-events: none;
-  transition: transform 0.1s ease;
+  /* transform-origin: center; */
+  transition: transform 0.1s ease-out;
   z-index: 9999;
+  left: 0;
+  top: 0;
+  /* transform: translate(-50%, -50%); */
 }
 
 .cursor--active {
   background-color: red;
   border-radius: 40px;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
+  /* transform: scale(0.8); */
 }
 
 .cursor--hover {
   background-color: yellow;
+  /* transform: scale(1.2); */
 }
 
 video::-webkit-media-controls {
